@@ -1,0 +1,7 @@
+feature branch - 일반 개발용(완료시 develope과 merge)
+
+develope branch - 버전 구분용 (완료시 master와 deploy 로 merge)
+
+hotfix branch - 핫픽스용(master로만 merge가능)
+
+deploy branch - 배포용 (master에서만 merge함)
