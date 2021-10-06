@@ -6,6 +6,7 @@ import com.dancepick.domain.user.UserRepository
 import org.mindrot.jbcrypt.BCrypt
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.text.SimpleDateFormat
 import java.util.*
 
 @Service
@@ -59,6 +60,16 @@ class SignupService @Autowired constructor(
 
     private fun validateBirth(birth:Date){
 //제대로된 날짜 형식입력인지, 년월일 범위 안인지, 글자수가 정확한지
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR"))//date형태지정
+        val stringDate = dateFormat.format(birth)//date를 string으로
+        val isNotValidBirth = "^[0-9]{4}+-[0-9]{2}+-[0-9]{2}$"
+            .toRegex()
+            .matches(stringDate)
+            .not()
+
+        if (isNotValidBirth){
+            throw DancepickException ("생년월일을 다시 정확하게 입력해주십시오.")
+        }
     }
 
     private fun validateNickName(nickname:String){
