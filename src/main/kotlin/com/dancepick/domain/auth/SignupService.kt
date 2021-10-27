@@ -15,6 +15,8 @@ class SignupService @Autowired constructor(
 ){
     fun signup(signupRequest: SignupRequest){
         validateRequest(signupRequest)
+        checkDuplicates(signupRequest.email,signupRequest.nickName,signupRequest.phoneNum)
+        registerUser(signupRequest)
     }
 
     private fun validateRequest(signupRequest: SignupRequest){

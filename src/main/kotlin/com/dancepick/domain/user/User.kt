@@ -13,7 +13,7 @@ class User (
     var userClass: Boolean,
     var nickName: String,
     var recentAt: Date //유저의 최근 접속일
-        )// 얘네는 널값이면 안되는 필수 값들이라 여기다 일케 써놓으면 되는거 아닌교
+        )
 {
 
     @Id

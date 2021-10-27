@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/user")
-class UserApiController @Autowired constructor(
+class SignupApiController @Autowired constructor(
     private val signupService: SignupService){
 
-    @PostMapping("/users")
+    @PostMapping("/signup")
     fun signup(@RequestBody signupRequest: SignupRequest) =
         ApiResponse.ok(signupService.signup(signupRequest))
 }

@@ -12,4 +12,6 @@ interface UserRepository : JpaRepository<User, Long>{
 
     fun findByNickName(nickName: String):User?
 
+    fun findByName(name:String):User?
+
 }
