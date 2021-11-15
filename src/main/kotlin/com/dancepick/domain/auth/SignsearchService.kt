@@ -37,14 +37,12 @@ class SignsearchService @Autowired constructor(
         val user = userRepository.findByEmail(signsearchPasswordRequest.email.toLowerCase())
             ?: throw DancepickException("해당하는 이메일이 없음")
 
-        if(signSearchVerify(null,signsearchPasswordRequest, user) == -1){
+       if(signSearchVerify(null,signsearchPasswordRequest, user) == -1){
             throw DancepickException("입력한 이름과 이메일이 매칭되지 않습니다")
         }else{
             return SignsearchPasswordResponse(user.no)
-        }
-    //null checking - 테이블의 user.no는 jpa가 입력하도록 null로 설정함
-        //여기에선 null을 반환해서는 안되는데 reponse에서 nonnullable로 설정해서 문제가 생김
-        //$$$$$$$$$$$$$질문이후 변경$$$$$$$$$$$$$$$$$
+            }
+
     }
 
 
@@ -57,7 +55,6 @@ class SignsearchService @Autowired constructor(
 
         return signsearchEmailRequest?.let { user.name.indexOf(it.name) }
             ?: signsearchPasswordRequest?.let { user.email.indexOf(it.email) }
-    } //왼쪽값이 널이아니면 왼쪽값 반환, logic상으론 null이 나올 수 없어보이나 null check issue 때문에 반환자가 Int?
-
+    }
 
 }
